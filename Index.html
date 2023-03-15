@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html=eng>
+<html lang="en">
   <head>
     <title>Space Age Calculator</title>
   </head>
   <body>
     <div class="contentWrapper">
       <h1>What space age are you?</h1>
-      
-      <div class="formWrapper">
+  <div class="formWrapper">
+
+    <form>
+      <label for="orgAge">What is your age?</label>
+      <input id="orgAge" type="number">
+      <br><br>
+      <label for="ageDelta">Enter another age</label>
+      <input id="ageDelta" type="number">
+      <button id="submit" type="submit">Submit</button>
+    </form>
+
+  </div>
+
+  <div class="answerWrapper">
+    <h5 id="earth"></h5>
+    <h5 id="mercury"></h5>
+    <h5 id="venus"></h5>
+    <h5 id="mars"></h5>
+    <h5 id="jupiter"></h5>
+  </div>
   
-        <form>
-          <label>What is your age?</label>
-          <input id="orgAge">
-          <br><br>
-          <label>Enter another age</label>
-          <input id="ageDelta">
-          <button id="submit" type="submit">Submit</button>
-        </form>
-  
-      </div>
-  
-      <div class="answerWrapper">
-        <h5 id="earth"></h5>
-        <h5 id="mercury"></h5>
-        <h5 id="venus"></h5>
-        <h5 id="mars"></h5>
-        <h5 id="jupiter"></h5>
-      </div>
-   
-    
+</div>
+
   </body>
 </html>
