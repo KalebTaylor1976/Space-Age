@@ -18,6 +18,7 @@
   "dependencies": {
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "babel": "^6.23.0",
     "bootstrap": "^3.4.1",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
