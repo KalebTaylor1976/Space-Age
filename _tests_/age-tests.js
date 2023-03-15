@@ -1,4 +1,4 @@
-import Age from "../src/Space-age";
+import Age from "../src/Space-age.js";
 
 describe('Age', () => {
 
