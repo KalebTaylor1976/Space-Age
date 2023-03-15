@@ -1,44 +1,56 @@
-class SpaceAge {
-  constructor(age) {
-    this.age = age;
-    this.earthYears = age;
-    this.mercuryYears = parseFloat((age / 0.24).toFixed(2));
-    this.venusYears = parseFloat((age / 0.62).toFixed(2));
-    this.marsYears = parseFloat((age / 1.88).toFixed(2));
-    this.jupiterYears = parseFloat((age / 11.86).toFixed(2));
-  }
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/styles.css';
+import Age from "./Space-age.js";
 
-  yearsSince(pastAge) {
-    let yearsPassed = this.age - pastAge;
-    return {
-      Earth: yearsPassed,
-      Mercury: parseFloat((yearsPassed / 0.24).toFixed(2)),
-      Venus: parseFloat((yearsPassed / 0.62).toFixed(2)),
-      Mars: parseFloat((yearsPassed / 1.88).toFixed(2)),
-      Jupiter: parseFloat((yearsPassed / 11.86).toFixed(2))
-    };
-  }
+let age = new Age();
 
-  yearsUntil(futureAge) {
-    let yearsToPass = futureAge - this.age;
-    return {
-      Earth: yearsToPass,
-      Mercury: parseFloat((yearsToPass / 0.24).toFixed(2)),
-      Venus: parseFloat((yearsToPass / 0.62).toFixed(2)),
-      Mars: parseFloat((yearsToPass / 1.88).toFixed(2)),
-      Jupiter: parseFloat((yearsToPass / 11.86).toFixed(2))
-    };
-  }
-}
+let handlerFunction = (event) => {
+  event.preventDefault();
 
-function calculate() {
-  let age = document.getElementById("age").value;
-  let spaceAge = new SpaceAge(age);
-  let output = document.getElementById("output");
-  output.innerHTML = `
-    <p>Your age on Mercury: ${spaceAge.mercuryYears} years</p>
-    <p>Your age on Venus: ${spaceAge.venusYears} years</p>
-    <p>Your age on Mars: ${spaceAge.marsYears} years</p>
-    <p>Your age on Jupiter: ${spaceAge.jupiterYears} years</p>
-  `;
-}
+  let orgAge = document.querySelector("#orgAge").value;
+  let ageDelta = document.querySelector("#ageDelta").value;
+  
+  age.age = parseInt(orgAge);
+  age.ageDelta = parseInt(ageDelta);
+
+  displayAnswers();
+};
+
+let displayAnswers = () => {
+
+  let earth = document.querySelector("#earth");
+  let mercury = document.querySelector("#mercury");
+  let venus = document.querySelector("#venus");
+  let mars = document.querySelector("#mars");
+  let jupiter = document.querySelector("#jupiter");
+
+  if (age.ageDelta < age.age) {
+    earth.innerText = (age.age - age.ageDelta) + "  years has passed since you were " + age.ageDelta + " years old on Earth.";
+
+    mercury.innerText = "You are " + age.mercury() + " years old on Mercury. " + age.ageDeltaPast + " years on Mercury have passed since you were " + age.ageDelta;
+
+    venus.innerText = "You are " + age.venus() + " years old on Venus. " + age.ageDeltaPast + " years on Venus have passed since you were " + age.ageDelta;
+
+    mars.innerText = "You are " + age.mars() + " years old on Mars. " + age.ageDeltaPast + " years on Mars have passed since you were " + age.ageDelta;
+
+    jupiter.innerText = "You are " + age.jupiter() + " years old on Jupiter. " + age.ageDeltaPast + " years on Jupiter have passed since you were " + age.ageDelta;
+    
+  } else if (age.age < age.ageDelta) {
+    earth.innerText = (age.ageDelta - age.age) + " more years on Earth until you are " + age.ageDelta + " years old.";
+
+    mercury.innerText = "You are " + age.mercury() + " years old on Mercury. " + age.ageDeltaFuture + " years must pass on Mercury to be " + age.ageDelta + " on Earth.";
+
+    venus.innerText = "You are " + age.venus() + " years old on Venus. " + age.ageDeltaFuture + " years must pass on Venus to be " + age.ageDelta + " on Earth.";
+
+    mars.innerText = "You are " + age.mars() + " years old on Mars. " + age.ageDeltaFuture + " years must pass on Mars to be " + age.ageDelta + " on Earth.";
+
+    jupiter.innerText = "You are " + age.jupiter() + " years old on Jupiter. " + age.ageDeltaFuture + " years must pass on Jupiter to be " + age.ageDelta + " on Earth.";
+
+  }
+};
+
+window.addEventListener("load", function() {
+  let submit = document.querySelector("#submit");
+  submit.addEventListener("click", handlerFunction);
+});
