@@ -1,5 +1,5 @@
 body {
   background-color: rgb(76, 144, 167);
-  background-image: url(./../../assets/images/space.jpg);
+  background-image: url("../assets/space.jpg");
   color: white;
 }
