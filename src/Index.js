@@ -45,6 +45,8 @@ let displayAnswers = () => {
 
     jupiter.innerText = "You are " + age.jupiter() + " years old on Jupiter. " + age.ageDeltaFuture + " years must pass on Jupiter to be " + age.ageDelta + " on Earth.";
 
+    mars.innerText = "You are " + age.mars() + " years old on Mars. " + age.ageDeltaPast + " years on Mars have passed since you were " + age.ageDelta;
+
   }
 };
 
